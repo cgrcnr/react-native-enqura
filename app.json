@@ -25,7 +25,7 @@
         "NSFaceIDUsageDescription": "Allow ortak to use FaceID",
         "NSPhotoLibraryUsageDescription": "Allow ortak to identify you due to the regulation"
       },
-      "buildNumber": "3"
+      "buildNumber": "4"
     },
     "android": {
       "adaptiveIcon": {
