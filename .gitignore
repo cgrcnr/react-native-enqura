@@ -24,8 +24,8 @@ DerivedData
 project.xcworkspace
 .xcode.env.local
 
-ios/
-android/
+/ios/
+/android/
 
 # Bundle artifacts
 *.jsbundle

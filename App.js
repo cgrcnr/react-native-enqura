@@ -1,18 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import {hello, PI} from './modules/expo-enqura'
+import {hello, PI, setValueAsync} from './modules/expo-enqura'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {/* <Text>Open up App.js to start working on your app!</Text> */}
       <StatusBar style="auto" />
 
-      <Button title='enqura test' onPress={() => {
-        const result = hello()
-        alert(result)
+      <Button title='native module toast from pod' onPress={() => {
+        setValueAsync("test")
+        // const result = hello()
+        //alert(result)
       }} />
-      <Button title='native module test' onPress={() => {
+      <Button title='native module prop number PI' onPress={() => {
         alert(PI)
       }} />
     </View>
