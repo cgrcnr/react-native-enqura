@@ -1,11 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import {hello, PI} from './modules/expo-enqura'
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+
+      <Button title='enqura test' onPress={() => {
+        const result = hello()
+        alert(result)
+      }} />
+      <Button title='native module test' onPress={() => {
+        alert(PI)
+      }} />
     </View>
   );
 }

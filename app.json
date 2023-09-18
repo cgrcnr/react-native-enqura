@@ -2,7 +2,7 @@
   "expo": {
     "name": "react-native-enqura",
     "slug": "react-native-enqura",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -16,14 +16,23 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.cgrcnr.reactnativeenqura"
+      "bundleIdentifier": "com.blupay.ortakhisse",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera for video call.",
+        "NSMicrophoneUsageDescription": "This app uses the microphone for video call.",
+        "NSLocationWhenInUseUsageDescription":"This app uses the location for app management log.",
+        "LSApplicationQueriesSchemes": ["whatsapp"],
+        "NSFaceIDUsageDescription": "Allow ortak to use FaceID",
+        "NSPhotoLibraryUsageDescription": "Allow ortak to identify you due to the regulation"
+      },
+      "buildNumber": "3"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.cgrcnr.reactnativeenqura"
+      "package": "com.blupay.ortakhisse"
     },
     "web": {
       "favicon": "./assets/favicon.png"
