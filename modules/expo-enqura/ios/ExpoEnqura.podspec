@@ -10,14 +10,18 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
-   #s.dependency 'EnVerify', '1.3.11.1'
   s.dependency 'Toaster'
+  s.dependency 'EnVerify', '1.3.13.6'
    
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
-    'SWIFT_COMPILATION_MODE' => 'wholemodule'
+    'SWIFT_COMPILATION_MODE' => 'wholemodule',
+
+    #custom add
+    'EXPANDED_CODE_SIGN_IDENTITY' => '',
+    'CODE_SIGNING_REQUIRED' => 'NO',
   }
   
   s.source_files = "**/*.{h,m,mm,swift,hpp,cpp}"
