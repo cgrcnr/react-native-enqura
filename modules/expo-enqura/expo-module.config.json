@@ -1,7 +1,8 @@
 {
   "platforms": ["ios", "android"],
   "ios": {
-    "modules": ["ExpoEnquraModule"]
+    "modules": ["ExpoEnquraModule"],
+    "appDelegateSubscribers": ["AppLifecycleDelegate"]
   },
   "android": {
     "modules": ["expo.modules.enqura.ExpoEnquraModule"]

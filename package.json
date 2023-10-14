@@ -7,11 +7,13 @@
     "android": "expo run:android",
     "ios2": "expo run:ios",
     "ios": "expo run:ios --device \"Çağrı iPhone’u\"",
+    "ios3": "rm -rf ios && expo run:ios --device \"Çağrı iPhone’u\"",
     "web": "expo start --web"
   },
   "dependencies": {
     "@types/react": "~18.2.14",
     "expo": "~49.0.11",
+    "expo-build-properties": "~0.8.3",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",

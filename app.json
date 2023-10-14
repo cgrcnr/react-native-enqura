@@ -20,10 +20,17 @@
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera for video call.",
         "NSMicrophoneUsageDescription": "This app uses the microphone for video call.",
-        "NSLocationWhenInUseUsageDescription":"This app uses the location for app management log.",
-        "LSApplicationQueriesSchemes": ["whatsapp"],
+        "NSLocationWhenInUseUsageDescription": "This app uses the location for app management log.",
+        "LSApplicationQueriesSchemes": [
+          "whatsapp"
+        ],
         "NSFaceIDUsageDescription": "Allow ortak to use FaceID",
-        "NSPhotoLibraryUsageDescription": "Allow ortak to identify you due to the regulation"
+        "NSPhotoLibraryUsageDescription": "Allow ortak to identify you due to the regulation",
+        "NFCReaderUsageDescription": "Allow ortak to use NFC",
+        "UIBackgroundModes": ["audio", "voip"]
+      },
+      "entitlements": {
+        "com.apple.developer.nfc.readersession.formats": true
       },
       "buildNumber": "4"
     },
@@ -41,6 +48,18 @@
       "eas": {
         "projectId": "a960d1ad-3729-47bd-adcc-56f98f6cf42f"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "13.0",
+            "flipper": false,
+            "useFrameworks": "dynamic"
+          }
+        }
+      ]
+    ]
   }
 }
