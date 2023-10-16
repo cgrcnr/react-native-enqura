@@ -29,9 +29,6 @@
         "NFCReaderUsageDescription": "Allow ortak to use NFC",
         "UIBackgroundModes": ["audio", "voip"]
       },
-      "entitlements": {
-        "com.apple.developer.nfc.readersession.formats": true
-      },
       "buildNumber": "4"
     },
     "android": {

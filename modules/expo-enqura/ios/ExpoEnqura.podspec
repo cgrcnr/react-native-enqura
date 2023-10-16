@@ -15,29 +15,50 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
-  s.dependency 'Toaster'
+  # s.dependency 'Toaster'
   s.dependency 'EnVerify', '1.3.13.6'
+
+  # s.weak_framework = 'EnQualify'
    
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_COMPILATION_MODE' => 'wholemodule',
+    'IPHONEOS_DEPLOYMENT_TARGET' => '13.0',
 
-    #custom add
-    # 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES',
-    # 'EXPANDED_CODE_SIGN_IDENTITY' => '',
-    # 'CODE_SIGNING_REQUIRED' => 'NO',
-    # 'CODE_SIGNING_ALLOWED' => 'NO',
+    # custom add
+    'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES',
+    'EXPANDED_CODE_SIGN_IDENTITY' => '',
+    'CODE_SIGNING_REQUIRED' => 'NO',
+    'CODE_SIGNING_ALLOWED' => 'NO',
   }
 
-  # s.subspec 'EnVerify' do |ap|
-  #   #ap.source_files = …
-  #   ap.pod_target_xcconfig = { 
+  # s.subspec 'ExpoModulesCore' do |sp|
+  #   sp.source_files = "**/*.{h,m,mm,swift,hpp,cpp}"
+  #   sp.pod_target_xcconfig = { 
+  #     'DEFINES_MODULE' => 'YES',
+  #     'SWIFT_COMPILATION_MODE' => 'wholemodule',
+  #   }
+  # end
+
+  # s.subspec 'EnQualify' do |sp|
+  #   sp.pod_target_xcconfig = { 
   #     'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES',
   #     'EXPANDED_CODE_SIGN_IDENTITY' => '',
   #     'CODE_SIGNING_REQUIRED' => 'NO',
   #     'CODE_SIGNING_ALLOWED' => 'NO',
+  #     'IPHONEOS_DEPLOYMENT_TARGET' => '13.0',
+  #   }
+  # end
+
+  # s.subspec 'EnVerify' do |sp|
+  #   sp.pod_target_xcconfig = { 
+  #     'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES',
+  #     'EXPANDED_CODE_SIGN_IDENTITY' => '',
+  #     'CODE_SIGNING_REQUIRED' => 'NO',
+  #     'CODE_SIGNING_ALLOWED' => 'NO',
+  #     'IPHONEOS_DEPLOYMENT_TARGET' => '13.0',
   #   }
   # end
 

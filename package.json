@@ -8,7 +8,9 @@
     "ios2": "expo run:ios",
     "ios": "expo run:ios --device \"Çağrı iPhone’u\"",
     "ios3": "rm -rf ios && expo run:ios --device \"Çağrı iPhone’u\"",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "rm": "rm -rf ios",
+    "pre": "expo prebuild"
   },
   "dependencies": {
     "@types/react": "~18.2.14",

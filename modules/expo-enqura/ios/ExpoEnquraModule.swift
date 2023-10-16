@@ -1,5 +1,5 @@
 import ExpoModulesCore
-import Toaster
+// import Toaster
 
 public class ExpoEnquraModule: Module {
   // Each module class must implement the definition function. The definition consists of components
@@ -30,7 +30,7 @@ public class ExpoEnquraModule: Module {
     // is by default dispatched on the different thread than the JavaScript runtime runs on.
     AsyncFunction("setValueAsync") { (value: String) in
       // Send an event to JavaScript.
-      Toast(text: "Hello from native toast ! ! !").show()
+      //Toast(text: "Hello from native toast ! ! !").show()
       self.sendEvent("onChange", [
         "value": value
       ])
