@@ -1,7 +1,10 @@
 import ExpoModulesCore
 // import Toaster
+import EnQualify
 
 public class ExpoEnquraModule: Module {
+  //let testObject = CustomMethods()
+  var enVerifyManager = EnverifyManager.shared
   // Each module class must implement the definition function. The definition consists of components
   // that describes the module's functionality and behavior.
   // See https://docs.expo.dev/modules/module-api for more details about available components.
@@ -24,6 +27,7 @@ public class ExpoEnquraModule: Module {
       //EnVerify.idFrontStart()
       
       return "Hello world! 👋"
+      
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code
@@ -31,6 +35,8 @@ public class ExpoEnquraModule: Module {
     AsyncFunction("setValueAsync") { (value: String) in
       // Send an event to JavaScript.
       //Toast(text: "Hello from native toast ! ! !").show()
+      enVerifyManager.initialize()
+      enVerifyManager.nfcVerify()
       self.sendEvent("onChange", [
         "value": value
       ])

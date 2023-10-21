@@ -56,6 +56,12 @@
             "useFrameworks": "dynamic"
           }
         }
+      ],
+      [
+        "./plugins/ios-podfile.plugin.js",
+        {
+          "file": "plugins/newPodFile"
+        }
       ]
     ]
   }
