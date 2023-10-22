@@ -36,7 +36,7 @@ public class ExpoEnquraModule: Module {
       // Send an event to JavaScript.
       //Toast(text: "Hello from native toast ! ! !").show()
       enVerifyManager.initialize()
-      enVerifyManager.nfcVerify()
+      //enVerifyManager.nfcVerify()
       self.sendEvent("onChange", [
         "value": value
       ])

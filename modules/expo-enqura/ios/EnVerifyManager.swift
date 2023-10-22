@@ -5,8 +5,10 @@ import UIKit
 import CoreNFC
 
 public class EnverifyManager: EnVerifyDelegate {
-  public static let shared = EnverifyManager()
+  private init() {
+  }
 
+  public static let shared = EnverifyManager()
   var agentRequestType: AgentRequestType = .none
   var isNFCRetry: Bool = false
   var userManager = UserManager.shared
@@ -117,12 +119,6 @@ public class EnverifyManager: EnVerifyDelegate {
         EnVerify.setSpeaker(soundOn: false)
     } else{
         EnVerify.setSpeaker(soundOn: true)
-    }
-    let rootViewController = UIViewController()
-    var navigationController = UINavigationController(rootViewController: rootViewController)
-
-    DispatchQueue.main.async {
-      EnVerify.idViewStart(vc: rootViewController)
     }
   }
   
