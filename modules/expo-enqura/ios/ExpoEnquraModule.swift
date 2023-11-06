@@ -1,6 +1,5 @@
 import ExpoModulesCore
 // import Toaster
-import EnQualify
 
 public class ExpoEnquraModule: Module {
   //let testObject = CustomMethods()
@@ -36,6 +35,18 @@ public class ExpoEnquraModule: Module {
       // Send an event to JavaScript.
       //Toast(text: "Hello from native toast ! ! !").show()
       enVerifyManager.initialize()
+      //enVerifyManager.idRetry()
+      //enVerifyManager.nfcVerify()
+      self.sendEvent("onChange", [
+        "value": value
+      ])
+    }
+
+    AsyncFunction("startVerification") { (value: String) in
+      // Send an event to JavaScript.
+      //Toast(text: "Hello from native toast ! ! !").show()
+      enVerifyManager.startVerification()
+      //enVerifyManager.idRetry()
       //enVerifyManager.nfcVerify()
       self.sendEvent("onChange", [
         "value": value

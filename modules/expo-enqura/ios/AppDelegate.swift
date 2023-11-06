@@ -2,28 +2,26 @@ import ExpoModulesCore
 import EnQualify
 import Foundation
 import React
+import UIKit
 
 public class AppDelegate: ExpoAppDelegateSubscriber {
   var navigationController = EnVerify.getNavigationController()
   var userManager = UserManager.shared
 
   public var window: UIWindow?
+  let jsCodeLocation: URL = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: ".expo/.virtual-metro-entry")
 
   public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    //let rootViewController = getVCFromModuleName("DD4", nil, launchOptions)
-    //let rootViewController = UIApplication.shared.firstKeyWindow?.rootViewController
-    //let rootViewController = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
-    //let rootViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController
-    let rootViewController = MainViewController()
+    let rootViewController = getVCFromModuleName("main", nil, launchOptions)
+    
+    self.window = UIWindow(frame: UIScreen.main.bounds)
+    self.window?.rootViewController = rootViewController
 
-    window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = rootViewController
-
-    navigationController = UINavigationController(rootViewController: rootViewController!)
+    navigationController = UINavigationController(rootViewController: rootViewController)
     EnVerify.setNavigationController(navigator: navigationController!)
 
     window?.rootViewController = navigationController
-    window?.makeKeyAndVisible()
+    self.window?.makeKeyAndVisible()
     
     if userManager.isFirstLaunch() {
       //Defaults
@@ -41,7 +39,31 @@ public class AppDelegate: ExpoAppDelegateSubscriber {
   }
 
   public func applicationDidBecomeActive(_ application: UIApplication) {
-    // The app has become active.
+    // //let rootViewController = UIApplication.shared.windows.first?.rootViewController as? UIViewController
+    // //let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+    // //let rootViewController = UIApplication.shared.windows.last?.rootViewController
+    // let rootViewController = UIApplication.shared.firstKeyWindow?.rootViewController
+    // let x = UIApplication.shared.connectedScenes.filter({ $0.activationState == .foregroundActive }).compactMap({$0 as? UIWindowScene})
+    // // self.window = UIWindow(frame: UIScreen.main.bounds)
+    // // self.window?.rootViewController = rootViewController
+
+    // navigationController = UINavigationController(rootViewController: rootViewController!)
+    // EnVerify.setNavigationController(navigator: navigationController!)
+
+    // // window?.rootViewController = navigationController
+    // // self.window?.makeKeyAndVisible()
+    
+    // if userManager.isFirstLaunch() {
+    //   //Defaults
+    //   userManager.setServiceState(state: "SS_VIDEO_CALL")
+    //   userManager.setLivenessValue(value: 1) // kolay mod.
+    //   userManager.setCanAutoCloseOpen(value: true)
+    //   userManager.setIsTransactionDetailsOpen(value: false)
+    //   userManager.setIsRoutingScreensOpen(value: false)
+    //   userManager.setHoloDetectionType(value: "HOLO_ANY_DETECT")
+    //   userManager.setDetectionThresholdValue(value: 0.9)
+    //   userManager.setFirstLaunch()
+    // }
   }
 
   public func applicationWillResignActive(_ application: UIApplication) {
@@ -60,13 +82,42 @@ public class AppDelegate: ExpoAppDelegateSubscriber {
     // The app is about to terminate.
   }
 
-  func navigateToIDView() {
-    //let vc = getVCFromModuleName(moduleName, initialProperties, launchOptions)
-    // DispatchQueue.main.async {
-    //   //EnVerify.idViewStart(vc: window?.rootViewController)
-    //   EnVerify.idViewStart(vc: self.window?.rootViewController as! UIViewController)
-    // }
+  func getVCFromModuleName(_ moduleName: String,_ initialProperties: NSDictionary?, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> UIViewController {
+    var props: [NSObject : AnyObject]? = nil
+    if (initialProperties != nil) {
+      props = initialProperties! as [NSObject : AnyObject]
+    }
+    let rootView = RCTRootView(bundleURL: jsCodeLocation, moduleName: moduleName, initialProperties:props , launchOptions: launchOptions)
+    let rootViewController = UIViewController()
+    
+    rootViewController.view = rootView
+    return rootViewController
   }
+
+  // func navigateToIDView() {
+  //   //let vc = getVCFromModuleName(moduleName, initialProperties, launchOptions)
+  //   // DispatchQueue.main.async {
+  //   //   //EnVerify.idViewStart(vc: window?.rootViewController)
+  //   //   EnVerify.idViewStart(vc: self.window?.rootViewController as! UIViewController)
+  //   // }
+  // }
+
+  // func navigateToIDView() {
+  //   // let vc = getVCFromModuleName(moduleName, initialProperties, launchOptions)
+  //   // let jsCodeLocation: URL
+  //   // #if DEBUG
+  //   // jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
+  //   // #else
+  //   // jsCodeLocation = Bundle.main.url(forResource: "main", withExtension: "jsbundle")!
+  //   // #endif
+
+  //   let rootView = RCTRootView(bundleURL: jsCodeLocation, moduleName: "MyApp", initialProperties: nil, launchOptions: nil)
+  //   let mainViewController = UIViewController()
+  //   mainViewController.view = rootView
+  //   DispatchQueue.main.async {
+  //     EnVerify.idViewStart(vc: mainViewController)
+  //   }
+  // }
 }
 
 extension UIApplication {
@@ -103,6 +154,27 @@ extension UIApplication {
 //         let keyWindow = firstActiveScene?.keyWindow
         
 //         return keyWindow
+//     }
+// }
+
+// extension UIApplication {
+//     var firstKeyWindow: UIWindow? {
+//         return UIApplication.shared.connectedScenes
+//             .compactMap { $0 as? UIWindowScene }
+//             .filter { $0.activationState == .foregroundActive }
+//             .first?.windows
+//             .first(where: \.isKeyWindow)
+
+//     }
+// }
+
+// extension AppDelegate: RCTBridgeDelegate {
+//     public func sourceURL(for bridge: RCTBridge!) -> URL! {
+//         #if DEBUG
+//         return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "App", fallbackResource: nil)
+//         #else
+//         return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+//         #endif
 //     }
 // }
   

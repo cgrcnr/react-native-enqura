@@ -760,33 +760,33 @@ public class EnverifyManager: EnVerifyDelegate {
 //     }
 //   }
   
-//   @objc func startVerification(_ options: NSDictionary) -> Void {
-//     DispatchQueue.main.async {
-//       self._startVerification(options: options)
-//     }
-//   }
+  public func startVerification() -> Void {
+    DispatchQueue.main.async {
+      self._startVerification()
+    }
+  }
   
-//   public func _startVerification(options: NSDictionary) -> Void {
-//     var items = [String]()
-//     let message = RCTConvert.nsString(options["message"])
-//     if message != "" {
-//       items.append(message!)
-//     }
-//     if items.count == 0 {
-//       print("No message to share")
-//       return
-//     }
-//     //let controller = RCTPresentedViewController()
-//     //let shareController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-//     //shareController.popoverPresentationController?.sourceView = controller?.view
-//     //controller?.present(shareController, animated: true, completion: nil)
+  public func _startVerification() -> Void {
+    // var items = [String]()
+    // let message = RCTConvert.nsString()
+    // if message != "" {
+    //   items.append(message!)
+    // }
+    // if items.count == 0 {
+    //   print("No message to share")
+    //   return
+    // }
+    //let controller = RCTPresentedViewController()
+    //let shareController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    //shareController.popoverPresentationController?.sourceView = controller?.view
+    //controller?.present(shareController, animated: true, completion: nil)
     
-//     agentRequestType = .busy
+    agentRequestType = .busy
     
-//     DispatchQueue.main.async {
-//       guard EnVerify.selfServiceStart(self) else {return}
-//     }
-//   }
+    DispatchQueue.main.async {
+      guard EnVerify.selfServiceStart(self) else {return}
+    }
+  }
   
   
   

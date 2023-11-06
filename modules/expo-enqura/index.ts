@@ -17,6 +17,10 @@ export async function setValueAsync(value: string) {
   return await ExpoEnquraModule.setValueAsync(value);
 }
 
+export async function startVerification(value: string) {
+  return await ExpoEnquraModule.startVerification(value);
+}
+
 const emitter = new EventEmitter(ExpoEnquraModule ?? NativeModulesProxy.ExpoEnqura);
 
 export function addChangeListener(listener: (event: ChangeEventPayload) => void): Subscription {
