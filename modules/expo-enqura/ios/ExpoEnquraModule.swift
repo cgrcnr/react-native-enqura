@@ -55,11 +55,18 @@ public class ExpoEnquraModule: Module {
 
     // Enables the module to be used as a native view. Definition components that are accepted as part of the
     // view definition: Prop, Events.
-    View(ExpoEnquraView.self) {
+    // View(ExpoEnquraView.self) {
+    //   // Defines a setter for the `name` prop.
+    //   Prop("name") { (view: ExpoEnquraView, prop: String) in
+    //     print(prop)
+    //   }
+    // }
+
+    View(ContainerView.self) {
       // Defines a setter for the `name` prop.
-      Prop("name") { (view: ExpoEnquraView, prop: String) in
-        print(prop)
-      }
+      // Prop("name") { (view: EnquraModuleView, prop: String) in
+      //   print(prop)
+      // }
     }
   }
 }
