@@ -1,4 +1,6 @@
 import ExpoModulesCore
+import EnQualify
+import UIKit
 // import Toaster
 
 public class ExpoEnquraModule: Module {
@@ -31,14 +33,26 @@ public class ExpoEnquraModule: Module {
 
     // Defines a JavaScript function that always returns a Promise and whose native code
     // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { (value: String) in
+    AsyncFunction("initialize") { () in
       // Send an event to JavaScript.
-      //Toast(text: "Hello from native toast ! ! !").show()
+      //Toast(text: "Hello from native toast ! ! !").show(),
       enVerifyManager.initialize()
-      //enVerifyManager.idRetry()
-      //enVerifyManager.nfcVerify()
+      
+
       self.sendEvent("onChange", [
-        "value": value
+        "value": "initialize"
+      ])
+    }
+
+    AsyncFunction("configureEnVerify") { () in
+      // Send an event to JavaScript.
+      //Toast(text: "Hello from native toast ! ! !").show(),
+        print("asdasd")
+      let navigationController = UIApplication.topNavigationController()
+      EnVerify.setNavigationController(navigator: navigationController!)
+    
+      self.sendEvent("onChange", [
+        "value": "configureEnVerify"
       ])
     }
 

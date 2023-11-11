@@ -13,9 +13,15 @@ export function hello(): string {
   return ExpoEnquraModule.hello();
 }
 
-export async function setValueAsync(value: string) {
-  return await ExpoEnquraModule.setValueAsync(value);
+export async function initialize() {
+  return await ExpoEnquraModule.initialize();
 }
+
+export async function configureEnVerify() {
+  return await ExpoEnquraModule.configureEnVerify();
+}
+
+
 
 export async function startVerification(value: string) {
   return await ExpoEnquraModule.startVerification(value);
